@@ -205,5 +205,5 @@ NovaSec is designed for **authorized security testing only**. Always ensure you 
 ---
 
 <div align="center">
-Built with ❤️ by the NovaSec Team
+Created and maintained by Shahbaz Ali
 </div>
