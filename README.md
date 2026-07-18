@@ -2,208 +2,214 @@
 
 <div align="center">
 
-![NovaSec Banner](https://img.shields.io/badge/NovaSec-v1.0.0-blue?style=for-the-badge&logo=shield)
-![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Kali Linux](https://img.shields.io/badge/Kali_Linux-Compatible-557C94?style=for-the-badge&logo=kali-linux&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen?style=for-the-badge)
+# 🛡️ NovaSec
 
-**A modular, production-grade cybersecurity CLI framework for Security Engineers, SOC Analysts, Penetration Testers, and Bug Bounty Hunters.**
+**A Modular Cybersecurity CLI Framework for Reconnaissance, Vulnerability Assessment, and Security Automation.**
 
-[Documentation](https://docs.novasec.dev) · [Plugin Registry](https://plugins.novasec.dev) · [Report Bug](https://github.com/novasec/novasec/issues) · [Request Feature](https://github.com/novasec/novasec/issues)
+![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=flat-square&logo=python&logoColor=white)
+![Platform](https://img.shields.io/badge/Platform-Kali%20Linux-blue?style=flat-square&logo=kalilinux)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Active-success?style=flat-square)
 
 </div>
 
 ---
 
-## ✨ Features
+## 📖 Overview
 
-- 🔍 **Reconnaissance** — DNS enumeration, subdomain brute-forcing, WHOIS, OSINT
-- 🔬 **Vulnerability Scanning** — Web, network, SSL/TLS, service detection
-- 🧩 **Plugin Architecture** — Drop-in plugins, community marketplace
-- 📊 **Reporting** — JSON, HTML, PDF, Markdown, CSV outputs
-- 🎯 **Threat Intelligence** — CVE enrichment, IOC extraction, NVD integration
-- ⚙️ **Scan Profiles** — Stealth, aggressive, bug bounty presets
-- 📋 **Structured Logging** — JSON logs + Rich terminal UI + audit trail
-- 🔌 **API Integrations** — Shodan, VirusTotal, Censys, NVD
+NovaSec is an extensible command-line cybersecurity framework written in Python.
+
+It is designed to help Security Engineers, SOC Analysts, Penetration Testers, and students perform reconnaissance, vulnerability assessment, and plugin-based security testing from a single CLI.
+
+The project follows a modular architecture so new scanners and integrations can be added without modifying the core framework.
 
 ---
 
-## 🚀 Quick Start
+# ✨ Current Features
 
-### Prerequisites (Kali Linux)
+### 🔍 Reconnaissance
+
+- DNS Enumeration
+- WHOIS Lookup
+- Subdomain Enumeration
+
+### 🔎 Scanning
+
+- Port Scanner
+- Web Scanner
+- SSL Scanner
+
+### 🔌 Plugin System
+
+- Dynamic Plugin Loader
+- Nmap Wrapper
+- Nikto Wrapper
+- Nuclei Wrapper
+- FFUF Wrapper
+
+### 📄 Reporting
+
+- Rich Terminal Output
+- Structured Findings
+- Severity Classification
+
+### ⚙ Configuration
+
+- YAML Configuration
+- Environment Variables
+- CLI Configuration
+
+---
+
+# 🚀 Installation
+
+Clone the repository
 
 ```bash
-sudo apt update && sudo apt install -y nmap nikto ffuf nuclei python3.12 python3-pip pipx
+git clone https://github.com/Shahbaz-ali22/NovaSec.git
+cd NovaSec
 ```
 
-### Installation
+Create virtual environment
 
 ```bash
-# Via pipx (recommended)
-pipx install novasec
-
-# Via pip
-pip install novasec
-
-# From source
-git clone https://github.com/novasec/novasec.git
-cd novasec
-poetry install
-poetry run novasec --help
+python3 -m venv .venv
+source .venv/bin/activate
 ```
 
-### First Run
+Install dependencies
 
 ```bash
-# Show all commands
+pip install -e .
+```
+
+Verify installation
+
+```bash
 novasec --help
+```
 
-# DNS reconnaissance
-novasec recon dns --target example.com
+---
 
-# Subdomain enumeration
-novasec recon subdomain --domain example.com --wordlist /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+# 📌 Usage
 
-# Port scan via nmap plugin
-novasec scan nmap --target 192.168.1.0/24 --ports 1-1000
+Show available commands
 
-# Web vulnerability scan
-novasec scan web --target https://example.com
+```bash
+novasec --help
+```
 
-# SSL/TLS analysis
-novasec scan ssl --target example.com
+DNS Enumeration
 
-# Generate HTML report
-novasec report generate --format html --output ./report.html
+```bash
+novasec recon dns example.com
+```
 
-# List installed plugins
+WHOIS Lookup
+
+```bash
+novasec recon whois example.com
+```
+
+Port Scan
+
+```bash
+novasec scan port scanme.nmap.org
+```
+
+Web Scan
+
+```bash
+novasec scan web http://example.com
+```
+
+List Plugins
+
+```bash
 novasec plugin list
+```
 
-# Show current config
+Configuration
+
+```bash
 novasec config show
 ```
 
 ---
 
-## 📁 Project Structure
+# 🧩 Built-in Plugins
 
-```
+| Plugin | Purpose |
+|---------|---------|
+| Nmap | Network Port Scanning |
+| Nikto | Web Server Scanning |
+| Nuclei | Template-based Vulnerability Scanning |
+| FFUF | Web Content Discovery |
+
+---
+
+# 📂 Project Structure
+
+```text
 novasec/
-├── cli/            # Typer CLI commands (presentation layer only)
-├── core/           # Framework kernel: registry, DI, events, interfaces
-├── domain/         # Security business logic: recon, scan, threat
-├── infrastructure/ # External adapters: HTTP, DNS, APIs, storage
-├── plugins/        # Plugin engine + bundled plugins
-├── config/         # Pydantic settings + YAML loader
-├── reporting/      # Report formatters: JSON, HTML, PDF, Markdown
-├── logging/        # Structured logging + audit trail
-└── utils/          # Shared utilities
+├── cli/
+├── core/
+├── config/
+├── domain/
+├── infrastructure/
+├── plugins/
+├── reporting/
+└── utils/
 ```
 
 ---
 
-## 🧩 Plugin Development
+# 🚧 Roadmap
 
-Create a new plugin in 3 steps:
-
-**1. Create plugin directory**
-```bash
-mkdir -p ~/.novasec/plugins/my_scanner
-```
-
-**2. Create `plugin.yaml` manifest**
-```yaml
-manifest_version: "1"
-name: "my_scanner"
-display_name: "My Custom Scanner"
-version: "1.0.0"
-author: "Your Name"
-category: "scanner"
-entrypoint: "scanner.MyScanner"
-kali_dependencies: []
-python_dependencies: []
-permissions:
-  - network_access
-```
-
-**3. Implement `scanner.py`**
-```python
-from novasec.plugins.base import PluginBase, PluginManifest
-from novasec.core.context import ExecutionContext
-from novasec.reporting.models import FindingSet
-
-class MyScanner(PluginBase):
-    async def run(self, target: str, **options) -> FindingSet:
-        # Your scan logic here
-        return FindingSet(findings=[])
-```
+- [x] DNS Enumeration
+- [x] WHOIS Lookup
+- [x] Port Scanner
+- [x] Plugin Framework
+- [x] Rich CLI Output
+- [ ] Better Web Scanner
+- [ ] HTML Reports
+- [ ] PDF Reports
+- [ ] JSON Export
+- [ ] CVE Integration
+- [ ] VirusTotal Integration
+- [ ] Shodan Integration
+- [ ] AI-assisted Finding Analysis
 
 ---
 
-## ⚙️ Configuration
+# 🤝 Contributing
 
-NovaSec uses a 6-level configuration hierarchy (highest → lowest priority):
+Contributions are welcome.
 
-```
-CLI flags → Environment variables → ./novasec.yaml → ~/.novasec/config.yaml → /etc/novasec/config.yaml → Defaults
-```
-
-Set API keys via environment variables:
-```bash
-export NOVASEC_APIS__SHODAN_KEY="your-shodan-key"
-export NOVASEC_APIS__VIRUSTOTAL_KEY="your-vt-key"
-```
-
-Or in `~/.novasec/config.yaml`:
-```yaml
-apis:
-  shodan_key: "your-shodan-key"
-  virustotal_key: "your-vt-key"
-```
+Feel free to submit issues, feature requests, or pull requests to improve NovaSec.
 
 ---
 
-## 📊 Output Formats
+# ⚠ Legal Disclaimer
 
-```bash
-# JSON output (pipe-friendly)
-novasec recon dns --target example.com --output json
+NovaSec is intended **only for authorized security testing**.
 
-# Rich terminal table (default)
-novasec recon dns --target example.com
+Do not scan systems without explicit permission.
 
-# Save to file
-novasec report generate --format pdf --output ./pentest-report.pdf
-```
+The author is not responsible for misuse of this software.
 
 ---
 
-## 🧪 Development
+# 📜 License
 
-```bash
-git clone https://github.com/novasec/novasec.git
-cd novasec
-poetry install
-poetry run pytest tests/ -v
-poetry run ruff check novasec/
-poetry run mypy novasec/
-```
-
----
-
-## 📜 License
-
-MIT License — see [LICENSE](LICENSE) for details.
-
----
-
-## ⚠️ Legal Disclaimer
-
-NovaSec is designed for **authorized security testing only**. Always ensure you have explicit written permission before scanning any target. The authors are not responsible for misuse of this tool.
+MIT License
 
 ---
 
 <div align="center">
-Created and maintained by Shahbaz Ali
+
+Developed with ❤️ by **Shahbaz Ali**
+
+⭐ If you like this project, consider giving it a Star.
+
 </div>
