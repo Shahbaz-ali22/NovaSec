@@ -1,0 +1,1 @@
+"""NovaSec DNS infrastructure package."""

@@ -1,0 +1,1 @@
+"""NovaSec nikto plugin package."""

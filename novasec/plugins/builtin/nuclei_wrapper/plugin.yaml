@@ -1,0 +1,17 @@
+manifest_version: "1"
+name: "nuclei_wrapper"
+display_name: "Nuclei Template Scanner"
+version: "1.0.0"
+author: "NovaSec Team"
+description: "Nuclei-powered template-based vulnerability scanner with community and custom templates."
+category: "scanner"
+tags: ["web", "vulnerability", "templates", "cve"]
+entrypoint: "runner.NucleiRunner"
+min_framework_version: "1.0.0"
+kali_dependencies:
+  - "nuclei"
+python_dependencies: []
+permissions:
+  - network_access
+  - subprocess_exec
+  - file_write

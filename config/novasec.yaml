@@ -1,0 +1,67 @@
+# ============================================================
+# NovaSec Main Configuration File
+# ============================================================
+# Place this file in your project root as ./novasec.yaml
+# or at ~/.novasec/config.yaml for user-level settings.
+#
+# All values here override built-in defaults.
+# Environment variables override this file:
+#   NOVASEC_<SECTION>__<KEY>=value
+# ============================================================
+
+general:
+  output_dir: ./novasec_workspace
+  workspace_name: default
+  max_threads: 10
+  banner: true
+
+network:
+  timeout: 30
+  retries: 3
+  rate_limit: 10          # requests per second
+  verify_ssl: true
+  # proxy: "http://127.0.0.1:8080"   # Uncomment for Burp proxy
+
+dns:
+  nameservers:
+    - "8.8.8.8"
+    - "1.1.1.1"
+  timeout: 5.0
+
+scan:
+  aggressive: false
+  stealth_mode: false
+  scan_timeout: 300       # seconds
+
+exploit:
+  enabled: false          # Must be explicitly set to true
+  safe_mode: true
+  require_confirmation: true
+
+apis:
+  # Set via environment variables for security:
+  #   NOVASEC_APIS__SHODAN_KEY=your-key
+  #   NOVASEC_APIS__VIRUSTOTAL_KEY=your-key
+  shodan_key: null
+  virustotal_key: null
+  censys_id: null
+  censys_secret: null
+
+reporting:
+  default_format: html
+  include_evidence: true
+  include_remediation: true
+  company_name: ""
+  report_title: "NovaSec Security Assessment Report"
+
+logging:
+  level: INFO             # DEBUG | INFO | WARNING | ERROR | CRITICAL
+  format: rich            # rich | json | plain
+  # log_file: ~/.novasec/logs/novasec.log
+
+plugins:
+  enabled: true
+  disabled_plugins: []
+  # extra_plugin_dirs:
+  #   - ~/.novasec/plugins
+  #   - /opt/novasec-plugins

@@ -1,0 +1,1 @@
+"""NovaSec storage package."""

@@ -1,0 +1,1 @@
+"""NovaSec scan domain package."""

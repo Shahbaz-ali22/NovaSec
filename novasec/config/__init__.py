@@ -1,0 +1,1 @@
+"""NovaSec configuration package."""

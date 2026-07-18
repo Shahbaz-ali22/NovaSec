@@ -1,0 +1,26 @@
+# NovaSec Stealth Scan Profile
+# ============================================================
+# Low-noise configuration for passive/stealthy reconnaissance.
+# Use when operating in environments where detection is a concern.
+#
+# Usage: novasec scan <cmd> --profile stealth --target <target>
+# ============================================================
+
+network:
+  rate_limit: 2           # Very low rate to avoid detection
+  timeout: 60             # Longer timeout for slow responses
+  retries: 1              # Fewer retries
+  user_agent: "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0"
+
+scan:
+  stealth_mode: true
+  randomize_ports: true
+  skip_host_discovery: false
+  scan_timeout: 600       # Longer overall timeout
+
+dns:
+  timeout: 8.0            # Slower DNS queries
+
+general:
+  max_threads: 3
+  max_concurrent_tasks: 5

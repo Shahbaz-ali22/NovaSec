@@ -1,0 +1,1 @@
+"""NovaSec infrastructure HTTP package."""

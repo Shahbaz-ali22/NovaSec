@@ -1,0 +1,1 @@
+"""NovaSec CLI sub-package."""

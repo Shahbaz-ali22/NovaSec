@@ -1,0 +1,79 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.whl
+MANIFEST
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+.Python
+
+# Poetry
+poetry.lock
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+# Type Checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pytype/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+
+# NovaSec runtime
+*.novasec_session
+novasec_workspace/
+.novasec/logs/
+scan_results/
+reports/output/
+
+# Secrets (never commit these)
+.env
+.env.local
+.env.*.local
+secrets.yaml
+api_keys.yaml
+
+# Documentation
+site/
+docs/_build/
+
+# Packaging
+*.spec

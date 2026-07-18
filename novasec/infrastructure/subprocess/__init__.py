@@ -1,0 +1,1 @@
+"""NovaSec subprocess infrastructure package."""

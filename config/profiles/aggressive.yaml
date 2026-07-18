@@ -1,0 +1,23 @@
+# NovaSec Aggressive Scan Profile
+# ============================================================
+# Maximum intensity configuration for comprehensive assessments.
+# Use only on authorized targets in controlled environments.
+#
+# Usage: novasec scan <cmd> --profile aggressive --target <target>
+# ============================================================
+
+network:
+  rate_limit: 100         # High throughput
+  timeout: 15
+  retries: 5
+  max_connections: 500
+
+scan:
+  aggressive: true
+  stealth_mode: false
+  scan_timeout: 120
+  max_hosts: 65536
+
+general:
+  max_threads: 50
+  max_concurrent_tasks: 200

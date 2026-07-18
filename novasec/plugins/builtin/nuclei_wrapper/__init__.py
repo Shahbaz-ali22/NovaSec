@@ -1,0 +1,1 @@
+"""NovaSec nuclei plugin package."""

@@ -1,0 +1,3 @@
+# Active third party community plugins metadata registry.
+# Currently registered plugins are dynamically loaded from their manifest paths.
+plugins: []

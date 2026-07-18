@@ -1,0 +1,15 @@
+# Sample configuration file for tests
+general:
+  output_dir: ./test_workspace
+  workspace_name: test_run
+  max_threads: 5
+  banner: false
+
+network:
+  timeout: 10
+  rate_limit: 5
+
+scan:
+  default_ports:
+    - 80
+    - 443

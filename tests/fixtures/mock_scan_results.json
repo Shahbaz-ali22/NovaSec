@@ -1,0 +1,17 @@
+{
+  "scan_id": "ns-test12345",
+  "target": "example.com",
+  "scanned_at": "2026-07-18T12:00:00Z",
+  "plugin_source": "test_plugin",
+  "findings": [
+    {
+      "title": "Expired SSL Certificate",
+      "severity": "CRITICAL",
+      "description": "SSL Cert is expired on port 443.",
+      "target": "example.com:443",
+      "plugin_source": "test_plugin",
+      "remediation": "Renew SSL cert",
+      "impact": "Security warnings"
+    }
+  ]
+}

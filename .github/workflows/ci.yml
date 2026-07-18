@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install System Dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y nmap nikto ffuf nuclei
+        
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install poetry
+        poetry install
+        
+    - name: Run Lint checks
+      run: |
+        poetry run ruff check novasec/
+        
+    - name: Run Type checks
+      run: |
+        poetry run mypy novasec/
+        
+    - name: Run tests
+      run: |
+        poetry run pytest

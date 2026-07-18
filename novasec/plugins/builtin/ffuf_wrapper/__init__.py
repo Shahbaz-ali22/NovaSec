@@ -1,0 +1,1 @@
+"""NovaSec FFUF plugin package."""

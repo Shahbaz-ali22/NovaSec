@@ -1,0 +1,16 @@
+manifest_version: "1"
+name: "nikto_wrapper"
+display_name: "Nikto Web Scanner"
+version: "1.0.0"
+author: "NovaSec Team"
+description: "Nikto web server scanner — detects dangerous files, outdated software, and security misconfigurations."
+category: "scanner"
+tags: ["web", "http", "vulnerability", "misconfiguration"]
+entrypoint: "scanner.NiktoScanner"
+min_framework_version: "1.0.0"
+kali_dependencies:
+  - "nikto"
+python_dependencies: []
+permissions:
+  - network_access
+  - subprocess_exec

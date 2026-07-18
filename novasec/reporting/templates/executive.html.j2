@@ -1,0 +1,97 @@
+{% extends "base.html.j2" %}
+
+{% block content %}
+<header>
+    <h1>{{ report.title }}</h1>
+    <p>Target: <strong>{{ report.metadata.target }}</strong> | Generated at: {{ report.generated_at | datetime_format }}</p>
+</header>
+
+<div class="grid-2">
+    <div class="card">
+        <h2>Scan Metadata</h2>
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td style="padding: 8px 0; border-bottom: 1px solid #f1f3f5;"><strong>Scan ID</strong></td>
+                <td style="padding: 8px 0; border-bottom: 1px solid #f1f3f5;"><code>{{ report.metadata.scan_id }}</code></td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 0; border-bottom: 1px solid #f1f3f5;"><strong>Operator</strong></td>
+                <td style="padding: 8px 0; border-bottom: 1px solid #f1f3f5;">{{ report.metadata.operator }}</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 0; border-bottom: 1px solid #f1f3f5;"><strong>Profile</strong></td>
+                <td style="padding: 8px 0; border-bottom: 1px solid #f1f3f5;">{{ report.metadata.profile }}</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px 0; border-bottom: 1px solid #f1f3f5;"><strong>Duration</strong></td>
+                <td style="padding: 8px 0; border-bottom: 1px solid #f1f3f5;">{{ report.metadata.duration_seconds | round(2) }}s</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="card">
+        <h2>Severity Summary</h2>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            {% for sev, count in severity_summary.items() %}
+            <div style="flex: 1; min-width: 80px; text-align: center; padding: 15px; border-radius: 4px; background-color: #f8f9fa; border: 1px solid #e9ecef;">
+                <span class="severity-badge severity-{{ sev }}" style="display: block; margin-bottom: 5px;">{{ sev }}</span>
+                <span style="font-size: 1.8em; font-weight: bold;">{{ count }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        <div style="margin-top: 15px; font-size: 1.1em;">
+            Overall Risk Score: <strong>{{ report.risk_score }} / 10</strong>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Executive Summary</h2>
+    <p>{{ report.executive_summary or 'No executive summary provided for this scan session.' }}</p>
+</div>
+
+<h2>Findings Details</h2>
+{% for finding in findings %}
+<div class="card" style="border-left: 5px solid {{ finding.severity.value | severity_color }};">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <h3 style="margin: 0; font-size: 1.4em;">{{ finding.title }}</h3>
+        <span class="severity-badge severity-{{ finding.severity.value }}">{{ finding.severity.value }}</span>
+    </div>
+    <div style="color: #6c757d; font-size: 0.9em; margin-bottom: 15px;">
+        Target: <code>{{ finding.target }}</code> | Source: <code>{{ finding.plugin_source }}</code>
+    </div>
+    
+    <p><strong>Description:</strong> {{ finding.description }}</p>
+    
+    {% if finding.impact %}
+    <p><strong>Impact:</strong> {{ finding.impact }}</p>
+    {% endif %}
+    
+    {% if finding.remediation %}
+    <p><strong>Remediation:</strong> {{ finding.remediation }}</p>
+    {% endif %}
+    
+    {% if finding.cve_ids %}
+    <p><strong>CVEs:</strong> 
+        {% for cve in finding.cve_ids %}
+        <span style="background-color: #e9ecef; padding: 2px 6px; border-radius: 3px; font-family: monospace; font-size: 0.9em; margin-right: 5px;">{{ cve }}</span>
+        {% endfor %}
+    </p>
+    {% endif %}
+    
+    {% if finding.evidence %}
+    <h4>Technical Evidence</h4>
+    {% for ev in finding.evidence %}
+    <div style="margin-bottom: 15px;">
+        <strong>Type:</strong> {{ ev.type }} | <em>{{ ev.description }}</em>
+        <pre>{{ ev.data }}</pre>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% else %}
+<div class="card">
+    <p>No findings were discovered on this scan session.</p>
+</div>
+{% endfor %}
+{% endblock %}

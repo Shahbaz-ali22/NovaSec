@@ -1,0 +1,17 @@
+manifest_version: "1"
+name: "ffuf_wrapper"
+display_name: "FFUF Web Fuzzer"
+version: "1.0.0"
+author: "NovaSec Team"
+description: "FFUF-powered web directory and endpoint fuzzing for content discovery."
+category: "recon"
+tags: ["web", "fuzzing", "content-discovery", "directories"]
+entrypoint: "fuzzer.FFUFFuzzer"
+min_framework_version: "1.0.0"
+kali_dependencies:
+  - "ffuf"
+python_dependencies: []
+permissions:
+  - network_access
+  - subprocess_exec
+  - file_write

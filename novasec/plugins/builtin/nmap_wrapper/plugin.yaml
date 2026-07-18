@@ -1,0 +1,20 @@
+manifest_version: "1"
+name: "nmap_wrapper"
+display_name: "Nmap Scanner"
+version: "2.1.0"
+author: "NovaSec Team"
+description: >
+  Nmap-powered port and service discovery. Supports SYN scan (-sS),
+  service version detection (-sV), OS fingerprinting (-O), and script
+  scanning (-sC). Requires nmap to be installed on Kali Linux.
+category: "scanner"
+tags: ["network", "port", "service", "fingerprinting"]
+entrypoint: "scanner.NmapScanner"
+min_framework_version: "1.0.0"
+kali_dependencies:
+  - "nmap"
+python_dependencies:
+  - "python-nmap>=0.7.1"
+permissions:
+  - network_access
+  - subprocess_exec

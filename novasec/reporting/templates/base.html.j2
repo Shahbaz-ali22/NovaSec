@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ report.title }}{% endblock %}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #1a252f;
+            color: #ffffff;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+        }
+        header p {
+            margin: 0;
+            color: #b4c6d6;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            padding: 25px;
+            border: 1px solid #e9ecef;
+        }
+        .severity-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            font-weight: bold;
+            font-size: 0.9em;
+            color: #fff;
+            border-radius: 3px;
+        }
+        .severity-CRITICAL { background-color: #dc3545; }
+        .severity-HIGH { background-color: #fd7e14; }
+        .severity-MEDIUM { background-color: #ffc107; color: #212529; }
+        .severity-LOW { background-color: #0d6efd; }
+        .severity-INFO { background-color: #0dcaf0; }
+        
+        pre {
+            background-color: #f1f3f5;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 4px solid #1a252f;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

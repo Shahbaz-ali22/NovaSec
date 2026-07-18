@@ -1,0 +1,1 @@
+# Dummy integration tests init
