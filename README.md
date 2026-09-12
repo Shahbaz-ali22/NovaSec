@@ -1,215 +1,68 @@
-# NovaSec 🛡️
-
-<div align="center">
-
 # 🛡️ NovaSec
 
-**A Modular Cybersecurity CLI Framework for Reconnaissance, Vulnerability Assessment, and Security Automation.**
+> Modular Python CLI framework for authorized reconnaissance, security scanning, and security automation.
 
-![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=flat-square&logo=python&logoColor=white)
-![Platform](https://img.shields.io/badge/Platform-Kali%20Linux-blue?style=flat-square&logo=kalilinux)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Active-success?style=flat-square)
+[![Python](https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/) [![Platform](https://img.shields.io/badge/Platform-Kali%20Linux-557C94?logo=kalilinux)](https://www.kali.org/)
 
-</div>
+## Overview
 
----
+NovaSec brings common reconnaissance and assessment workflows into a modular command-line interface. It is designed for cybersecurity learning, controlled lab environments, and authorized security testing.
 
-## 📖 Overview
+## Features
 
-NovaSec is an extensible command-line cybersecurity framework written in Python.
+- 🔎 DNS and WHOIS reconnaissance
+- 🌐 Subdomain enumeration
+- 🔌 Port, web, and SSL scanning
+- 🧩 Plugin-based architecture
+- ⚙️ YAML/environment configuration
+- 📄 Structured findings and severity classification
+- 🛠️ Wrappers for Nmap, Nikto, Nuclei, and FFUF
 
-It is designed to help Security Engineers, SOC Analysts, Penetration Testers, and students perform reconnaissance, vulnerability assessment, and plugin-based security testing from a single CLI.
+## Architecture
 
-The project follows a modular architecture so new scanners and integrations can be added without modifying the core framework.
+```text
+CLI → Core → Security Modules → Plugins → Findings → Reports
+```
 
----
+## Stack
 
-# ✨ Current Features
+`Python 3.12+` `Kali Linux` `Nmap` `Nikto` `Nuclei` `FFUF` `YAML`
 
-### 🔍 Reconnaissance
-
-- DNS Enumeration
-- WHOIS Lookup
-- Subdomain Enumeration
-
-### 🔎 Scanning
-
-- Port Scanner
-- Web Scanner
-- SSL Scanner
-
-### 🔌 Plugin System
-
-- Dynamic Plugin Loader
-- Nmap Wrapper
-- Nikto Wrapper
-- Nuclei Wrapper
-- FFUF Wrapper
-
-### 📄 Reporting
-
-- Rich Terminal Output
-- Structured Findings
-- Severity Classification
-
-### ⚙ Configuration
-
-- YAML Configuration
-- Environment Variables
-- CLI Configuration
-
----
-
-# 🚀 Installation
-
-Clone the repository
+## Quick Start
 
 ```bash
 git clone https://github.com/Shahbaz-ali22/NovaSec.git
 cd NovaSec
-```
-
-Create virtual environment
-
-```bash
 python3 -m venv .venv
 source .venv/bin/activate
-```
-
-Install dependencies
-
-```bash
 pip install -e .
-```
-
-Verify installation
-
-```bash
 novasec --help
 ```
 
----
-
-# 📌 Usage
-
-Show available commands
-
-```bash
-novasec --help
-```
-
-DNS Enumeration
+## Example Commands
 
 ```bash
 novasec recon dns example.com
-```
-
-WHOIS Lookup
-
-```bash
 novasec recon whois example.com
-```
-
-Port Scan
-
-```bash
 novasec scan port scanme.nmap.org
-```
-
-Web Scan
-
-```bash
 novasec scan web http://example.com
-```
-
-List Plugins
-
-```bash
 novasec plugin list
 ```
 
-Configuration
+## Roadmap
 
-```bash
-novasec config show
-```
+- [x] Modular CLI
+- [x] Recon modules
+- [x] Plugin framework
+- [ ] HTML / PDF reporting
+- [ ] JSON export
+- [ ] CVE intelligence integration
+- [ ] Additional automated security checks
 
----
+## ⚠️ Responsible Use
 
-# 🧩 Built-in Plugins
+Use NovaSec only against systems you own or where you have explicit authorization to perform security testing.
 
-| Plugin | Purpose |
-|---------|---------|
-| Nmap | Network Port Scanning |
-| Nikto | Web Server Scanning |
-| Nuclei | Template-based Vulnerability Scanning |
-| FFUF | Web Content Discovery |
+## Author
 
----
-
-# 📂 Project Structure
-
-```text
-novasec/
-├── cli/
-├── core/
-├── config/
-├── domain/
-├── infrastructure/
-├── plugins/
-├── reporting/
-└── utils/
-```
-
----
-
-# 🚧 Roadmap
-
-- [x] DNS Enumeration
-- [x] WHOIS Lookup
-- [x] Port Scanner
-- [x] Plugin Framework
-- [x] Rich CLI Output
-- [ ] Better Web Scanner
-- [ ] HTML Reports
-- [ ] PDF Reports
-- [ ] JSON Export
-- [ ] CVE Integration
-- [ ] VirusTotal Integration
-- [ ] Shodan Integration
-- [ ] AI-assisted Finding Analysis
-
----
-
-# 🤝 Contributing
-
-Contributions are welcome.
-
-Feel free to submit issues, feature requests, or pull requests to improve NovaSec.
-
----
-
-# ⚠ Legal Disclaimer
-
-NovaSec is intended **only for authorized security testing**.
-
-Do not scan systems without explicit permission.
-
-The author is not responsible for misuse of this software.
-
----
-
-# 📜 License
-
-MIT License
-
----
-
-<div align="center">
-
-Developed with ❤️ by **Shahbaz Ali**
-
-⭐ If you like this project, consider giving it a Star.
-
-</div>
+**Shahbaz Ali** — Cybersecurity student
